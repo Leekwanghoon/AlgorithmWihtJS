@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>괄호문자제거</title>
+    </head>
+    <body>
+        <script>
+
+
+// 클래스로 queue구현
+// class Stack {
+//   constructor() {
+//     this._arr = [];
+//   }
+//   push(item) {
+//     this._arr.push(item);
+//   }
+//   pop() {
+//     return this._arr.pop();
+//   }
+//   peek() {
+//     return this._arr[this._arr.length - 1];
+//   }
+// }
+
+// const stack = new Stack();
+// stack.push(1);
+// stack.push(2);
+// stack.push(4);
+// console.log(stack.peek());
+// console.log(stack.pop()); // 3
+// console.log(stack.peek());
+
+
+function solution(s){  
+    let _list = [];
+
+    for(let x of s) {
+        if(x===")") {
+            while(_list.pop() !== '(');
+        } else _list.push(x);
+    }
+    answer = _list.join('');
+    return answer;
+
+}
+
+let str="(A(BC)D)EF(G(H)(IJ)K)LM(N)";
+console.log(solution(str)); //EFLM
+        </script>
+    </body>
+</html>

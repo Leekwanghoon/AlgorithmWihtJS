@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>바둑이승차</title>
+    </head>
+    <body>
+        <script>
+            function solution(c, arr){
+                let n = arr.length;
+
+                let max = 0;
+                function DFS(L,sum) {
+                    if(sum > c) {
+                        return;
+                    }
+                    
+                    if(max < sum) {
+                        max = sum;
+                    }
+                    if(L===n) {
+                        if(max < sum) {
+                            max = sum;
+                            return;
+                        }
+                    } else {
+                        DFS(L+1,sum + arr[L]);
+                        DFS(L+1,sum);
+                    }
+                }
+
+                DFS(0,0);
+
+                return max;
+            }
+
+            let arr=[81, 58, 42, 33, 61];
+            console.log(solution(259, arr));
+        </script>
+    </body>
+</html>

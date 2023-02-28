@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>삽입정렬</title>
+</head>
+<body>
+    
+    <!-- 이미 부분적으로 정렬되어있고, 중복되지않고, 서브루틴으로사용할 수 있다. -->
+    
+    <script>
+        //삽입정렬 n , nlogn,n*2
+        //병합정렬 nlogn nlogn
+
+        function solution(arr) {
+            let answer = arr;
+            for(let i=1; i<arr.length; i++) {
+                let tmp = arr[i],j;
+                for(j=i-1;j>=0;j--) {
+                    if(arr[j] > tmp) arr[j+1] = arr[j];
+                    else break;
+                }
+                arr[j+1] = tmp;
+            }
+            return answer;
+        }
+        let arr=[11, 7, 5, 6, 10, 9];
+            console.log(solution(arr));
+    </script>
+</body>
+</html>
+
+
+
+
+
+<!-- <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(arr){
+                let answer=arr;
+                for(let i=0; i<arr.length; i++){
+                    let tmp=arr[i], j;
+                    for(j=i-1; j>=0; j--){
+                        if(arr[j]>tmp) arr[j+1]=arr[j];
+                        else break;
+                    }
+                    arr[j+1]=tmp;
+                } 
+                return answer;
+            }
+
+            let arr=[11, 7, 5, 6, 10, 9];
+            console.log(solution(arr));
+        </script>
+    </body>
+</html>
+
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(arr){
+                let answer=[];
+                answer.push(arr[0]);
+                for(let i=1; i<arr.length; i++){
+                    for(let j=0; j<answer.length; j++){
+                        if(arr[i]<answer[j]){
+                            answer.splice(j, 0, arr[i]);
+                            break;
+                        } 
+                    }
+                }
+                return answer;
+            }
+
+            let arr=[11, 7, 5, 6, 10, 9];
+            console.log(solution(arr));
+        </script>
+    </body>
+</html> -->

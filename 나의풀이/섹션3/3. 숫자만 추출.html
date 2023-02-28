@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(str){
+                // console.log(isNaN(1)); false
+                // console.log(isNaN('1')); false
+                // console.log(isNaN('a')); true
+                // console.log(isNaN('아')); true
+                // console.log(isNaN(' ')); false
+                // console.log(isNaN('')); false
+                answer = '';
+                for(let i=0; i<str.length; i++) {
+                    if(!isNaN(str[i])) {
+                        answer += str[i];
+                    }
+                }
+                // console.log(answer);
+                return parseInt(answer);
+            }
+            
+            console.log(parseInt("00000032819")) //앞에 0을 다생략해줌
+            let str="g0en2T0s8eSoft";
+            console.log(solution(str));
+        </script>
+    </body>
+</html>

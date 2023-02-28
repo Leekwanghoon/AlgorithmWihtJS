@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>유효한 팰린드롬</title>
+    </head>
+    <body>
+        <script src="../섹션1/util.js"></script>
+        <script>
+            function solution(s){
+                let n = s.length;
+                i=0;
+                j=n-1;
+                let answer = "YES";
+                while(i<=j) {
+                    while(!isalpha(s[i])) {
+                        i += 1;
+                    }
+                    while(!isalpha(s[j])) {
+                        j -= 1;
+                    }
+                    if(convertToLowerCase(s[i]) !== convertToLowerCase(s[j])) {
+                        answer = "NO";
+                        break;
+                    }
+                    i += 1;
+                    j -= 1;
+                }
+                return answer;
+            }
+
+            let str="found7, time: study; Yduts; emit, 7Dnuof";
+            console.log(solution(str));
+            console.log(solution("dsajkasdjk  "));
+        </script>
+    </body>
+</html>

@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>쇠막대기</title>
+    </head>
+    <body>
+        <script>
+            function solution(s){
+                let stack = [s[0]];
+                let answer = 0;
+
+                for(let i=1; i<s.length; i++){
+                    if(s[i] === "(") stack.push("(");
+                    else {
+                        //")인경우"
+                        stack.pop();
+                        if(s[i-1]==='(') answer += stack.length;
+                        else answer++
+                    }
+                }
+                return answer;
+            }
+            
+            let a="()(((()())(())()))(())"; // 17
+            let b = "(((()(()()))(())()))(()())" //24
+            console.log(solution(a));
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

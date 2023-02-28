@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>문자열압축</title>
+    </head>
+    <body>
+        <script src="../섹션1/util.js"></script>
+        <script>
+            // function solution(s){
+            //     let count = 0;
+            //     let answer = "";
+            //     let compares = s[0];
+            //     let i=0;
+            //     while(i<s.length+1) {
+            //         if(s[i]===compares) {
+            //             count += 1;
+            //             i+=1;
+            //         } else {
+            //             answer += compares;
+            //             if(count != 1) {
+            //                 answer += count;
+            //                 count = 1
+            //             }
+            //             compares = s[i];
+            //             i+=1;
+            //         }
+            //     }
+            //     return answer;
+            // }
+            
+            //강사풀이 뒤에 문자열을 하나 추가하는 풀이 괜찮음
+            function solution(s) {
+                let answer="";
+                let cnt=1;
+                s=s+" ";
+                console.log(s.length)
+                for(let i=0; i<s.length-1; i++){
+                    if(s[i]===s[i+1]) cnt++;
+                    else{
+                        answer+=s[i];
+                        if(cnt>1) answer+=String(cnt);
+                        cnt=1;
+                    }
+                }
+                return answer;
+            }
+            
+            let str="KKHSSSSSSSE";
+            console.log(solution(str));
+        </script>
+    </body>
+</html>

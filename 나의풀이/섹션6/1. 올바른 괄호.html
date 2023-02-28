@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>올바른괄호</title>
+    </head>
+    <body>
+        <script>
+            function solution(s){
+                let _list = [];
+
+                for(let i=0;i<s.length;i++) {
+                    if(s[i]=="(") _list.push(s[i]);
+                    if(s[i]==")") {
+                        let a = _list.pop();
+                        if(!a) return "NO";
+                    }
+                }
+                if(_list.length > 0) return "NO"
+                return "YES"
+                
+            }
+            
+            let a="(()(()))(()";
+            let b = "(())()";
+            let c = ")()(";
+            let d = "()()()(";
+            let e = "(()(";
+            console.log(solution(a));
+            // console.log(solution(b));
+            // console.log(solution(c));
+            // console.log(solution(d));
+            // console.log(solution(e));
+        </script>
+    </body>
+</html>

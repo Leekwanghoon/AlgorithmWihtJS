@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>자릿수의합</title>
+    </head>
+    <body>
+        <script src="../섹션1/util.js"></script>
+        <script>
+
+            function solution(n, arr){
+                //1234
+                let maxOrigin = 0;
+                
+                //1+2+3+4
+                let max = 0;
+                for(let i=0;i<arr.length;i++) {
+                    let sumValue = 0;
+                    
+                    // 받은 숫자 문자열로 변환 123 -> '123'
+                    let _str = _convertString(arr[i]);
+                    
+
+                    for(let i=0;i<_str.length;i++) {
+                        sumValue += _convertNumber(_str[i]);
+                    }
+                    if(sumValue > max) {
+                        max = sumValue;
+                        maxOrigin = _convertNumber(_str);
+                    }
+                    if( sumValue === max) {
+                        if(_convertNumber(_str) > maxOrigin) {
+                            maxOrigin = _convertNumber(_str);
+                            max = sumValue;
+                        }                        
+                    }
+                }
+                return maxOrigin;
+            }
+            let arr = [10,2030,30303,202020,1010103498]
+            console.log(solution(7, [128, 460, 603, 40, 521 ,137, 123]));
+
+            
+        </script>
+    </body>
+</html>

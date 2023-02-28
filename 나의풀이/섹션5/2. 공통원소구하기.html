@@ -1,0 +1,55 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>공통원소구하기</title>
+    </head>
+    <body>
+        <script>
+            function solution(arr1, arr2){
+                let sortedA = arr1.sort(function(a,b) {
+                    return b-a;
+                });
+                let sortedB = arr2.sort((a,b) => b-a);
+
+
+                let left = 0;
+                let right = 0;
+
+
+                let finalAIndex = arr1.length-1;
+                let finalBIndex = arr2.length-1;
+
+                let _set = new Set();
+                while(true) {
+                    if(finalAIndex < 0 || finalBIndex < 0) {
+                        break;
+                    }
+                    if(sortedA[finalAIndex] === sortedB[finalBIndex]) {
+                        _set.add(sortedA.pop());
+                        sortedB.pop();
+                        finalAIndex -= 1;
+                        finalBIndex -= 1;
+                    } 
+
+                    if(sortedA[finalAIndex] > sortedB[finalBIndex]) {
+                        sortedB.pop();
+                        finalBIndex -= 1;
+                    }
+                    if(sortedA[finalAIndex] < sortedB[finalBIndex]) {
+                        sortedA.pop();
+                        finalAIndex -= 1;
+                    }
+                }
+
+                let _arr = Array.from(_set);
+
+                return _arr;
+            }
+            let a = [1,2,3,4,5,6,7,8,9,10,11];
+            let b = [-1,0,1,2,3,4,5,6,7,8,9,10,13,11,12];
+            // let a=[1, 3, 9, 5, 2]; // 1,2,3,5,9
+            // let b=[3, 2, 5, 7, 8]; // 2,3,5,7,8
+            console.log(solution(a, b));
+        </script>
+    </body>
+</html>

@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script src="../섹션1/util.js"></script>
+        <script>
+            function solution(s){
+                let n = s.length;
+                for(let i=0;i<n/2;i++) {
+                    if( NotequalTrue( convertToLowerCase(s[i]),convertToLowerCase(s[n-i-1])) ) return "NO"
+                }
+                return "YES"
+            }
+            
+            let str="gooG";
+            let _str="abcba";
+            
+
+            console.log(solution(_str));
+        </script>
+    </body>
+</html>
+
+
+

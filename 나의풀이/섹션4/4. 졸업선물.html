@@ -1,0 +1,78 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>졸업선물(백트래킹)</title>
+    </head>
+    <!-- 백트래킹으로 더 발전시킬수있어, 가지치기조건을 추가하도록 한다
+     -->
+    <body>
+        <script src="../섹션1/util.js"></script>
+        <script>
+
+            var _a = [];
+            var _list = [];
+            var _curList = [];
+            var maxCount = 0;
+            function subset(target,list,index,n) {
+                if(index === n) {
+                    let sumValue = 0;
+                    for(let i=0;i<list.length;i++) {
+                        let unitSum = list[i][0] + list[i][1];
+                        sumValue += unitSum;
+                    }
+                    if(list.length > 0 && sumValue===target) {
+                        // _a.push(curList);
+                        // _a.push(list)
+                        let powerList = Array.prototype.concat(curList,list) 
+                        _a.push(powerList);
+                        if(maxCount < powerList.length) {
+                            maxCount  = powerList.length;
+                        }
+                    };
+                    return;
+                }
+                let _newList = Array.prototype.concat(list,[_list[index]]);
+                subset(target,_newList,index+1,n)
+                subset(target,list,index+1,n)
+            }
+
+            function solution(m, product){
+                for(let i=0; i<product.length; i++){
+                    let 할인가격 = product[i][0]/2;
+                    let 가격 = 할인가격 + product[i][1];
+                    
+                    //target
+                    let 잔고 = m-가격;
+                    curList = [[product[i][0],product[i][1]]];
+                    //원본의 합
+                    _list = indexRemove(product,i);
+                    subset(잔고,[],0,_list.length);
+                }
+            }
+            
+            // 1,2,3,4,5
+            // let arr=[[1], [2], [3]];
+            let arr=[[6, 6], [2, 2], [4, 3], [4, 5], [10, 3]];
+            solution(28, arr);
+            console.log(maxCount);
+            
+
+            
+            //부분집합 select하는 알고리즘
+            
+
+
+
+</script>
+    </body>
+</html>
+
+
+
+<!-- 가격,배송비,가격+배송비,할인가+배송비
+[6,6,12,9] , [2,2,4,3], [4,3,7,5],  [4,5,9,7], [10,3,13,8]
+ -->
+
+
+
+

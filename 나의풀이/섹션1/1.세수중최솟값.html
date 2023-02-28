@@ -1,0 +1,42 @@
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>1.세수중최솟값</title>
+</head>
+<body>
+<script>
+// 100이하의 자연수 A, B, C를 입력받아 세 수 중 가장 작은 값을 출력하는 프로그램을 작성하
+// 세요.(정렬을 사용하면 안됩니다)
+
+function _each(list,iter) {
+    for(let i=0;i<list.length;i++) {
+        iter(list[i])
+    }
+    return list
+}
+
+function solution1(a, b, c){
+    let answer;
+    let _list = [a,b,c];
+    answer = Math.min.apply(null,_list);
+    return answer;
+}
+
+function solution2(a, b, c){
+    let answer;
+    let _list = [a,b,c];
+    let min = _list[0];
+    _each(_list,function(val) {
+        if(val < min) min = val
+    })
+    return min;
+}
+
+console.log(solution1(2,5,1))
+console.log(solution2(2,5,1))
+
+
+</script>
+</body>
+</html>

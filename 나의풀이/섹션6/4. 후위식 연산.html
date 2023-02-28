@@ -1,0 +1,95 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>후위식연산(총 전위,중위,후위)</title>
+
+        <!-- * 예제) 4 7 2 + *
+
+1.  왼쪽부터 순차적으로 읽으면서 연산자를 찾는다.
+
+2.  +연산자를 찾았다. +연산자를 기준으로 앞쪽 두개의 피연산자 7, 2 를 더한다.
+
+3.  연산을 진행하고 나면 연산된 값을 적어둔다. 4 9 *
+
+4.  다시 순차적으로 연산자를 찾는다.
+
+5.  *연산자를 찾았다. 앞쪽 두개의 피연산자를 이용하여 연산을 진행한다.
+
+6.  연산결과는 36 -->
+    </head>
+    <body>
+        <script>
+            function solution(s){
+                _list = [];
+
+                for(let x of s) {
+                    if(!isNaN(x)) _list.push(Number(x));
+                    else {
+                        let rt = parseInt(_list.pop());
+                        let lt = parseInt(_list.pop());
+                        if(x === '*') _list.push(lt*rt);
+                        if(x === '/') _list.push(lt/rt);
+                        if(x === '-') _list.push(lt-rt);
+                        if(x === '+') _list.push(lt+rt);
+                    }
+                }
+                console.log(_list);
+                return _list[0];
+            }
+
+            let str="352+*9-"; // 3*(5+2)-9 중위표현식
+            console.log(solution("472+*"));
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- let answer;
+                let stack=[];
+                for(let x of s){
+                    if(!isNaN(x)) stack.push(Number(x));
+                    else{
+                        let rt=stack.pop();
+                        let lt=stack.pop();
+                        if(x==='+') stack.push(lt+rt);
+                        else if(x==='-') stack.push(lt-rt);
+                        else if(x==='*') stack.push(lt*rt);
+                        else if(x==='/') stack.push(lt/rt);
+                    }
+                }
+                answer=stack[0]; -->

@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>최대점수구하기</title>
+    </head>
+    <body>
+        <script>
+            function solution(m, ps, pt){         
+                let n = ps.length;
+                let answer = 0;
+                function DFS(L,sum,time) {
+                    //시간초과한경우
+                    if(time > m) return;
+                    else {
+                        // 모든 배열탐색한경우
+                        if(L===n) {
+                            answer = Math.max(answer,sum);
+                            return;
+                        } else {
+                            DFS(L+1,sum+ps[L],time+pt[L]);
+                            DFS(L+1,sum,time);
+                        }
+                    }
+                }
+
+                DFS(0,0,0);
+                return answer;
+            }
+
+            let ps=[1000, 25, 15, 6, 7]; //점수
+            let pt=[20, 12, 8, 3, 4]; //시간
+            console.log(solution(20, ps, pt));
+        </script>
+    </body>
+</html>

@@ -1,0 +1,52 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>출력결과</title>
+</head>
+<body>
+    <script src="../섹션1/util.js"></script>
+<script>
+    function solution(arr){
+        let n = arr.length;
+        
+        
+        // //문자열뒤집는 알고리즘 필요 (1)
+        // let _reverseArr = [];
+        // for(let i=0; i<arr.length;i++) {
+        //     _reverseArr.push(_convertNumber(_reverseStr(_convertString(arr[i]))));
+        // }
+
+
+        
+        //_each,map으로 함수형으로 변환중 (1) => 함수형 프로그래밍으로 변경
+        let _reverseArr = _map(arr,function(value) {
+            return _convertNumber(_reverseStr(_convertString(value)));
+        })
+
+
+
+        let maxValue = _max(_reverseArr);
+        let visited = new Array(maxValue+1).fill(true);           
+        visited[0] = false;
+        visited[1] = false;
+
+        for(let i=2; i<visited.length; i++) {
+            if(visited[i] === false) continue;
+            for(let j=2*i;j<visited.length; j+=i) {
+                visited[j] = false;
+            }
+        }
+
+        _each(_reverseArr,function(value,i) {
+            if(visited[_reverseArr[i]]) {
+                console.log(_reverseArr[i]);
+            }
+        })
+
+    }
+    
+    let arr=[32, 55, 62, 20, 250, 370, 200, 30, 100];
+    console.log(solution(arr));
+</script>
+</body>
+</html>

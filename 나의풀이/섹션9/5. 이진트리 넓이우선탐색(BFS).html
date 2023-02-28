@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>이진트리 넓이우선탐색</title>
+    </head>
+    <body>
+        <script>
+            function solution(){  
+                let answer = "";
+                let queue = [];
+
+                queue.push(1);
+                while(queue.length) {
+                    let val = queue.shift();
+
+                    answer += (val+' ');
+                    for(let nv of [val*2,val*2+1]) {
+                        if(nv >7) continue;
+                        queue.push(nv);
+                    }
+                }
+                return answer;
+            }
+
+            console.log(solution());
+        </script>
+    </body>
+</html>
+
+
+

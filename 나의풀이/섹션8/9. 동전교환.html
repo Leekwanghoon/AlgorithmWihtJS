@@ -1,0 +1,66 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>동전교환</title>
+    </head>
+    <body>
+        <script>
+
+            //DP
+            function solution(m, arr){
+                let memo = [0,1,1,2,2,1];
+
+                for(let i=6; i<=m; i++) {
+                    let min = Math.min(memo[i-1]+1,memo[i-5]+1,memo[i-2]+1);
+                    memo.push(min);
+                }
+                return memo[m];
+        }
+
+            //BFS
+            // function solution(m, arr){
+            //     let answer=Number.MAX_SAFE_INTEGER;
+            //     let n=arr.length;
+                
+            //     let queue = [];
+            //     queue.push([0,0]);
+            //     while(queue.length) {
+            //         let val = queue.shift();
+            //         if(val[0] === m) {
+            //             answer = val[1];
+            //             break
+            //         };
+            //         for(let x of [1,2,5]) {
+            //             queue.push([x+val[0],val[1]+1]);
+            //         }
+            //     } 
+
+            //     return answer;
+            // }
+
+            //DFS풀이
+            // function solution(m, arr){
+            //     let answer=Number.MAX_SAFE_INTEGER;
+            //     let n=arr.length;
+                
+            //     function DFS(L, sum){
+            //         if(sum > m) return;
+            //         if(L > answer) return
+            //         if(sum === m) {
+            //             answer = Math.min(answer,L);
+            //         } else {
+            //             for(let x of arr) {
+            //                 DFS(L+1,x+sum);
+            //             }
+            //         }
+            //     }
+                
+            //     DFS(0, 0);
+            //     return answer;
+            // }
+
+            let arr=[1, 2, 5];
+            console.log(solution(15, arr));
+        </script>
+    </body>
+</html>

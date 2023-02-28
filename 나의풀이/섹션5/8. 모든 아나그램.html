@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>모든 아나그램찾기</title>
+    </head>
+    <body>
+        <script>
+            
+            function isAnagram(str,원본) {
+                let sh = new Map();
+                for(let x of 원본) {
+                    if(sh.has(x)) sh.set(x,sh.get(x)+1);
+                    else sh.set(x,1);
+                }
+                for(let x of str) {
+                    if(!sh.has(x) || sh.get(x)===0) return 0
+                    sh.set(x,sh.get(x)-1);
+                }
+                return 1;
+            }
+            function solution(s, t){
+                let answer = 0;
+                let tLength = t.length;
+                for(let i=0;i<s.length-tLength+1;i++) {
+                    let newStr = s.substr(i,tLength);
+                    answer += isAnagram(newStr,t);
+                }
+                return answer;
+            }
+            
+            let a="bacaAacba";
+            let b="abc";
+            console.log(solution(a, b));
+        </script>
+    </body>
+</html>

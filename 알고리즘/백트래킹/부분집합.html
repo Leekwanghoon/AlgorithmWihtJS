@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>부분집합만들기(백트래킹)</title>
+</head>
+<body>
+    <script>
+        let arr = [1,2,3,4];
+
+        let a = [];
+        function subset(index,list,n) {
+            if(index == n) {
+                a.push(list);
+                return;
+            }
+            //포함
+            let _newList = Array.prototype.concat(list,arr[index]);
+            subset(index+1,_newList,n);
+            //미포함
+            subset(index+1,list,n);
+        }
+        subset(0,[],arr.length);
+        console.log(a);
+    </script>
+</body>
+</html>

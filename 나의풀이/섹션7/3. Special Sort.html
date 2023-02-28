@@ -1,0 +1,73 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>구글인터뷰</title>
+    </head>
+    <body>
+        <script>
+           
+
+            function solution(arr) {
+                let answer = arr;
+                for(let i=0;i<arr.length-1;i++) {
+                    for(j=0;j<arr.length-i-1;j++) {
+                        if(arr[j] > 0 && arr[j+1] <0) {
+                            [arr[j],arr[j+1]] =[arr[j+1],arr[j]]
+                        }
+                    }
+                }
+                return answer;
+            }
+
+           
+            let arr=[1, 2, 3, -3, -2, 6, 5, -6];
+            console.log(solution(arr));
+            // 음수 순서대로 먼저 넣고 , 그다음 양수 순서대로 넣어라(정렬을사용해서)
+            // -3,-2,-6,1,2,3,5,6
+        </script>
+    </body>
+</html>
+
+
+
+
+<!-- function solution(arr){
+    let answer=arr;
+    for(let i=0; i<arr.length-1; i++){
+        for(let j=0; j<arr.length-i-1; j++){
+            if(arr[j]>0 && arr[j+1]<0){
+                [arr[j], arr[j+1]]=[arr[j+1], arr[j]];
+            }
+        }   
+    } 
+    return answer;
+}
+
+let arr=[1, 2, 3, -3, -2, 5, 6, -6];
+console.log(solution(arr)); -->
+
+
+<!-- 
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(arr){
+                let answer=[];
+                for(let x of arr){
+                    if(x<0) answer.push(x);
+                }
+                for(let x of arr){
+                    if(x>0) answer.push(x);
+                }
+                return answer;
+            }
+
+            let arr=[1, 2, 3, -3, -2, 5, 6, -6];
+            console.log(solution(arr));
+        </script>
+    </body>
+</html> -->
