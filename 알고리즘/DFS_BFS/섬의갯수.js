@@ -5,7 +5,6 @@ const filePath = process.platform === "linux" ? "/dev/stdin" : "섬의갯수inpu
 
 let input = fs.readFileSync(filePath).toString().trim().split("\n");
 
-
 let dx = [0,0,-1,1,-1,-1,1,1];
 let dy = [-1,1,0,0,-1,1,-1,1];
 
